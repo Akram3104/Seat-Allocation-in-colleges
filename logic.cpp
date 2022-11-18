@@ -108,6 +108,273 @@ void open_f2(string f2)
 }
 
 
+class seat_allocation
+{
+    private :
+    int max_cse=40;
+    int max_ece=40;
+    int max_mech=40;
+    int max_cse_oc=16;
+    int max_ece_oc=16;
+    int max_mech_oc=16;
+    int max_cse_ews=4;
+    int max_ece_ews=4;
+    int max_mech_ews=4;
+    int max_cse_sc=6;
+    int max_ece_sc=6;
+    int max_mech_sc=6;
+    int max_cse_st=3;
+    int max_ece_st=3;
+    int max_mech_st=3;
+    int max_cse_obc=11;
+    int max_ece_obc=11;
+    int max_mech_obc=11;
+
+    /////////////////////////
+    int no_cse_oc=0;
+    int no_ece_oc=0;
+    int no_mech_oc=0;
+    int no_cse_ews=0;
+    int no_ece_ews=0;
+    int no_mech_ews=0;
+    int no_cse_sc=0;
+    int no_ece_sc=0;
+    int no_mech_sc=0;
+    int no_cse_st=0;
+    int no_ece_st=0;
+    int no_mech_st=0;
+    int no_cse_obc=0;
+    int no_ece_obc=0;
+    int no_mech_obc=0;
+
+    public :
+    seat_allocation()
+    {
+        sort(open.begin(),open.end(),compare);
+        sort(oc.begin(),oc.end(),compare);
+        sort(obc.begin(),obc.end(),compare);
+        sort(sc.begin(),sc.end(),compare);
+        sort(st.begin(),st.end(),compare);
+        sort(ews.begin(),ews.end(),compare);
+    }
+
+    void allocateSeat()
+    {
+        for(int i=0;i<oc.size();i++)
+        {
+            for(int j=0;j<100;j++)
+            {
+                if(oc[i].first==applicants[i].user_id)
+                {
+                    if(applicants[i].is_allocated==false)
+                    {
+                        if(checkSeat(applicants[i].choice_1,applicants[i].cat))
+                        {
+                            give_seat(applicants[i].choice_1,applicants[i].cat);
+                            applicants[i].allocated_branch=applicants[i].choice_1;
+                            break;
+                        }
+                        else if(checkSeat(applicants[i].choice_2,applicants[i].cat))
+                        {
+                            give_seat(applicants[i].choice_2,applicants[i].cat);
+                            applicants[i].allocated_branch=applicants[i].choice_2;
+                            break;
+                        }
+                        else if(checkSeat(applicants[i].choice_3,applicants[i].cat))
+                        {
+                            give_seat(applicants[i].choice_3,applicants[i].cat);
+                            applicants[i].allocated_branch=applicants[i].choice_3;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        for(int i=0;i<obc.size();i++)
+        {
+            for(int j=0;j<100;j++)
+            {
+                if(oc[i].first==applicants[i].user_id)
+                {
+                    if(applicants[i].is_allocated==false)
+                    {
+                        if(checkSeat(applicants[i].choice_1,applicants[i].cat))
+                        {
+                            give_seat(applicants[i].choice_1,applicants[i].cat);
+                            applicants[i].allocated_branch=applicants[i].choice_1;
+                            break;
+                        }
+                        else if(checkSeat(applicants[i].choice_2,applicants[i].cat))
+                        {
+                            give_seat(applicants[i].choice_2,applicants[i].cat);
+                            applicants[i].allocated_branch=applicants[i].choice_2;
+                            break;
+                        }
+                        else if(checkSeat(applicants[i].choice_3,applicants[i].cat))
+                        {
+                            give_seat(applicants[i].choice_3,applicants[i].cat);
+                            applicants[i].allocated_branch=applicants[i].choice_3;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        for(int i=0;i<ews.size();i++)
+        {
+            for(int j=0;j<100;j++)
+            {
+                if(oc[i].first==applicants[i].user_id)
+                {
+                    if(applicants[i].is_allocated==false)
+                    {
+                        if(checkSeat(applicants[i].choice_1,applicants[i].cat))
+                        {
+                            give_seat(applicants[i].choice_1,applicants[i].cat);
+                            applicants[i].allocated_branch=applicants[i].choice_1;
+                            break;
+                        }
+                        else if(checkSeat(applicants[i].choice_2,applicants[i].cat))
+                        {
+                            give_seat(applicants[i].choice_2,applicants[i].cat);
+                            applicants[i].allocated_branch=applicants[i].choice_2;
+                            break;
+                        }
+                        else if(checkSeat(applicants[i].choice_3,applicants[i].cat))
+                        {
+                            give_seat(applicants[i].choice_3,applicants[i].cat);
+                            applicants[i].allocated_branch=applicants[i].choice_3;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        for(int i=0;i<sc.size();i++)
+        {
+            for(int j=0;j<100;j++)
+            {
+                if(oc[i].first==applicants[i].user_id)
+                {
+                    if(applicants[i].is_allocated==false)
+                    {
+                        if(checkSeat(applicants[i].choice_1,applicants[i].cat))
+                        {
+                            give_seat(applicants[i].choice_1,applicants[i].cat);
+                            applicants[i].allocated_branch=applicants[i].choice_1;
+                            break;
+                        }
+                        else if(checkSeat(applicants[i].choice_2,applicants[i].cat))
+                        {
+                            give_seat(applicants[i].choice_2,applicants[i].cat);
+                            applicants[i].allocated_branch=applicants[i].choice_2;
+                            break;
+                        }
+                        else if(checkSeat(applicants[i].choice_3,applicants[i].cat))
+                        {
+                            give_seat(applicants[i].choice_3,applicants[i].cat);
+                            applicants[i].allocated_branch=applicants[i].choice_3;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        for(int i=0;i<st.size();i++)
+        {
+            for(int j=0;j<100;j++)
+            {
+                if(oc[i].first==applicants[i].user_id)
+                {
+                    if(applicants[i].is_allocated==false)
+                    {
+                        if(checkSeat(applicants[i].choice_1,applicants[i].cat))
+                        {
+                            give_seat(applicants[i].choice_1,applicants[i].cat);
+                            applicants[i].allocated_branch=applicants[i].choice_1;
+                            break;
+                        }
+                        else if(checkSeat(applicants[i].choice_2,applicants[i].cat))
+                        {
+                            give_seat(applicants[i].choice_2,applicants[i].cat);
+                            applicants[i].allocated_branch=applicants[i].choice_2;
+                            break;
+                        }
+                        else if(checkSeat(applicants[i].choice_3,applicants[i].cat))
+                        {
+                            give_seat(applicants[i].choice_3,applicants[i].cat);
+                            applicants[i].allocated_branch=applicants[i].choice_3;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bool checkSeat(string branch,string cat)
+    {
+        if(branch=="CSE")
+        {
+            if(cat=="OC") return no_cse_oc<=max_cse_oc;
+            else if(cat=="OBC") return no_cse_obc<=max_cse_obc;
+            else if(cat=="SC") return no_cse_sc<=max_cse_sc;
+            else if(cat=="ST") return no_cse_st<=max_cse_st;
+            else if(cat=="EWS") return no_cse_ews<=max_cse_ews;
+        }
+        else if(branch=="ECE")
+        {
+            if(cat=="OC") return no_ece_oc<=max_ece_oc;
+            else if(cat=="OBC") return no_ece_obc<=max_ece_obc;
+            else if(cat=="SC") return no_ece_sc<=max_ece_sc;
+            else if(cat=="ST") return no_ece_st<=max_ece_st;
+            else if(cat=="EWS") return no_ece_ews<=max_ece_ews;
+        }
+        else if(branch=="MECH")
+        {
+            if(cat=="OC") return no_mech_oc<=max_mech_oc;
+            else if(cat=="OBC") return no_mech_obc<=max_mech_obc;
+            else if(cat=="SC") return no_mech_sc<=max_mech_sc;
+            else if(cat=="ST") return no_mech_st<=max_mech_st;
+            else if(cat=="EWS") return no_mech_ews<=max_mech_ews;
+        }
+    }
+
+    void give_seat(string branch,string cat)
+    {
+        if(branch=="CSE")
+        {
+            if(cat=="OC") no_cse_oc++;
+            else if(cat=="OBC")  no_cse_obc++;
+            else if(cat=="SC")  no_cse_sc++;
+            else if(cat=="ST")  no_cse_st++;
+            else if(cat=="EWS") no_cse_ews++;
+        }
+        else if(branch=="ECE")
+        {
+           if(cat=="OC") no_ece_oc++;
+            else if(cat=="OBC")  no_ece_obc++;
+            else if(cat=="SC")  no_ece_sc++;
+            else if(cat=="ST")  no_ece_st++;
+            else if(cat=="EWS") no_ece_ews++;
+        }
+        else if(branch=="MECH")
+        {
+            if(cat=="OC") no_mech_oc++;
+            else if(cat=="OBC")  no_mech_obc++;
+            else if(cat=="SC")  no_mech_sc++;
+            else if(cat=="ST")  no_mech_st++;
+            else if(cat=="EWS") no_mech_ews++;
+        }
+    }
+
+
+};
+
 
 int main()
 {
@@ -116,5 +383,8 @@ int main()
     getline(cin,f2);
     open_f1(f1);
     open_f2(f2);
+
+    seat_allocation obj;
+    obj.allocateSeat();
 
 }
