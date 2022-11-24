@@ -14,7 +14,7 @@ int main()
 {
     Applicant obj[500];
     ifstream file;
-    file.open("x.txt");
+    file.open("input_info_ids.txt");
     string id;
     string caste;
     string rank;
@@ -59,7 +59,7 @@ int main()
         }
     }
     ofstream file2;
-    file2.open("info.txt");
+    file2.open("info_category.txt");
     for(int i=0;i<500;i++)
     {
         file2<<obj[i].id<<"\n"<<obj[i].caste<<"\n"<<obj[i].crl<<"\n"<<obj[i].rrank<<"\n";

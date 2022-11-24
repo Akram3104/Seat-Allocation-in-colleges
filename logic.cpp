@@ -108,7 +108,7 @@ void open_f2(string f2)
 }
 
 
-class seat_allocation
+class SeatAllocater
 {
     private :
     int max_cse=40;
@@ -148,7 +148,7 @@ class seat_allocation
     int no_mech_obc=0;
 
     public :
-    seat_allocation()
+    SeatAllocater()
     {
         sort(open.begin(),open.end(),compare);
         sort(oc.begin(),oc.end(),compare);
@@ -384,7 +384,8 @@ int main()
     open_f1(f1);
     open_f2(f2);
 
-    seat_allocation obj;
+    SeatAllocater
+ obj;
     obj.allocateSeat();
 
 }
