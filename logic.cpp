@@ -20,115 +20,32 @@ class applicant
     bool is_allocated=0;
     string allocated_branch;
 };
-applicant applicants[120];
+applicant applicants[250];
 
-vector<pair<string,int>>open;
-vector<pair<string,int>>oc;
-vector<pair<string,int>>ews;
-vector<pair<string,int>>sc;
-vector<pair<string,int>>st;
-vector<pair<string,int>>obc;
-void insert(string user_id,string cat,int res_rank,int ctrl_rank)
-{
-    open.push_back({user_id,ctrl_rank});
-    if(cat=="OC")
-    {
-        oc.push_back({user_id,res_rank,});
-    }
-    else if(cat=="EWS")
-    {
-        ews.push_back({user_id,res_rank,});
-    }
-    else if(cat=="SC")
-    {
-        sc.push_back({user_id,res_rank,});
-    }
-    else if(cat=="ST")
-    {
-        st.push_back({user_id,res_rank,});
-    }
-    else if(cat=="OBC")
-    {
-        obc.push_back({user_id,res_rank,});
-    }
-}
-void open_f1(string f1)
-{
-    ifstream file;
-    file.open(f1);
-    string line;
-    int n=0;
-    string user_id="",cat="",ctrl_rank="",res_rank="";
-
-    while(getline(file,user_id))
-    {
-        getline(file,cat);
-        getline(file,ctrl_rank);
-        getline(file,res_rank);
-        insert(user_id,cat,stoi(res_rank),stoi(ctrl_rank));
-        applicants[n].user_id=user_id;
-        applicants[n].cat=cat;
-        applicants[n].ctrl_rank=stoi(ctrl_rank);
-        applicants[n].res_rank=stoi(res_rank);
-        user_id="";
-        cat="";
-        ctrl_rank="";
-        res_rank="";
-        n++;
-    }
-}
-
-
-void open_f2(string f2)
-{
-    ifstream file;
-    file.open(f2);
-    string user_id="",choice_1="",choice_2="",choice_3="";
-    while(getline(file,user_id))
-    {
-        getline(file,choice_1);
-        getline(file,choice_2);
-        getline(file,choice_3);
-
-        for(int i=0;i<100;i++)
-        {
-            if(applicants[i].user_id==user_id)
-            {
-                applicants[i].choice_1=choice_1;
-                applicants[i].choice_2=choice_2;
-                applicants[i].choice_3=choice_3;
-                break;
-            }
-        }
-
-        choice_1="";
-        choice_2="";
-        choice_3="";
-    }
-}
 
 
 class SeatAllocater
 {
     private :
-    int max_cse=40;
-    int max_ece=40;
-    int max_mech=40;
-    int max_cse_oc=16;
-    int max_ece_oc=16;
-    int max_mech_oc=16;
-    int max_cse_ews=4;
-    int max_ece_ews=4;
-    int max_mech_ews=4;
-    int max_cse_sc=6;
-    int max_ece_sc=6;
-    int max_mech_sc=6;
-    int max_cse_st=3;
-    int max_ece_st=3;
-    int max_mech_st=3;
-    int max_cse_obc=11;
-    int max_ece_obc=11;
-    int max_mech_obc=11;
+    
+    int max_cse=30;
+    int max_ece=30;
+    int max_mech=30;
+    int max_cse_oc=13;
+    int max_ece_oc=13;
+    int max_mech_oc=13;
+    int max_cse_ews=3;
+    int max_ece_ews=3;
+    int max_mech_ews=3;
+    int max_cse_sc=4;
+    int max_ece_sc=4;
+    int max_mech_sc=4;
+    int max_cse_st=2;
+    int max_ece_st=2;
+    int max_mech_st=2;
+    int max_cse_obc=8;
+    int max_ece_obc=8;
+    int max_mech_obc=8;
 
     /////////////////////////
     int no_cse_oc=0;
@@ -146,78 +63,163 @@ class SeatAllocater
     int no_cse_obc=0;
     int no_ece_obc=0;
     int no_mech_obc=0;
+    vector<pair<string,int>>open;
+    vector<pair<string,int>>oc;
+    vector<pair<string,int>>ews;
+    vector<pair<string,int>>sc;
+    vector<pair<string,int>>st;
+    vector<pair<string,int>>obc;
+    
+    map<string,vector<int>> nit_calicut;
+    map<string,vector<int>> iit_goa;
+    map<string,vector<int>> iiit_trichy;
+    map<string,vector<int>> iiit_ranchi;
+    map<string,vector<int>> nit_warangal;
+    
 
     public :
     SeatAllocater()
     {
+        string f1,f2;
+        getline(cin,f1);
+        getline(cin,f2);
+        open_f1(f1);
+        open_f2(f2);
         sort(open.begin(),open.end(),compare);
         sort(oc.begin(),oc.end(),compare);
         sort(obc.begin(),obc.end(),compare);
         sort(sc.begin(),sc.end(),compare);
         sort(st.begin(),st.end(),compare);
         sort(ews.begin(),ews.end(),compare);
+        initialise_college_data();
     }
+    void initialise_college_data()
+    {
+        nit_calicut["CSE"]={13,3,8,4,2};
+        nit_calicut["MECH"]={13,3,8,4,2};
+        nit_calicut["ECE"]={13,3,8,4,2};
+        iit_goa["CSE"]={13,3,8,4,2};
+        iit_goa["MECH"]={13,3,8,4,2};
+        iit_goa["ECE"]={13,3,8,4,2};
+        iiit_trichy["CSE"]={13,3,8,4,2};
+        iiit_trichy["MECH"]={13,3,8,4,2};
+        iiit_trichy["ECE"]={13,3,8,4,2};
+        iiit_ranchi["CSE"]={13,3,8,4,2};
+        iiit_ranchi["MECH"]={13,3,8,4,2};
+        iiit_ranchi["ECE"]={13,3,8,4,2};
+        nit_warangal["CSE"]={13,3,8,4,2};
+        nit_warangal["MECH"]={13,3,8,4,2};
+        nit_warangal["ECE"]={13,3,8,4,2};
+        
+    }
+    void insert(string user_id,string cat,int res_rank,int ctrl_rank)
+    {
+        open.push_back({user_id,ctrl_rank});
+        if(cat=="OC")
+        {
+            oc.push_back({user_id,res_rank});
+        }
+        else if(cat=="EWS")
+        {
+            ews.push_back({user_id,res_rank});
+        }
+        else if(cat=="SC")
+        {
+            sc.push_back({user_id,res_rank});
+        }
+        else if(cat=="ST")
+        {
+            st.push_back({user_id,res_rank});
+        }
+        else if(cat=="OBC")
+        {
+            obc.push_back({user_id,res_rank});
+        }
+    }   
+    void open_f1(string f1)
+    {
+        ifstream file;
+        file.open(f1);
+        string line;
+        int n=0;
+        string user_id="",cat="",ctrl_rank="",res_rank="";
+
+        while(getline(file,user_id))
+        {
+            getline(file,cat);
+            getline(file,ctrl_rank);    
+            getline(file,res_rank); 
+            insert(user_id,cat,stoi(res_rank),stoi(ctrl_rank)); 
+            applicants[n].user_id=user_id;  
+            applicants[n].cat=cat;  
+            applicants[n].ctrl_rank=stoi(ctrl_rank);
+            applicants[n].res_rank=stoi(res_rank);  
+            user_id=""; 
+            cat="";
+            ctrl_rank="";
+            res_rank="";
+            n++;
+        }
+    }
+    void open_f2(string f2)
+    {
+        ifstream file;
+        file.open(f2);
+        string user_id="",choice_1="",choice_2="",choice_3="";
+        while(getline(file,user_id))
+        {
+            getline(file,choice_1);
+            getline(file,choice_2);
+            getline(file,choice_3);
+
+            for(int i=0;i<250;i++)
+            {
+                if(applicants[i].user_id==user_id)
+                {
+                    applicants[i].choice_1=choice_1;
+                    applicants[i].choice_2=choice_2;
+                    applicants[i].choice_3=choice_3;
+                    break;
+                }
+            }   
+
+            choice_1="";
+            choice_2="";
+            choice_3="";
+        }
+    }
+
+
 
     void allocateSeat()
     {
-        for(int i=0;i<oc.size();i++)
-        {
-            for(int j=0;j<100;j++)
-            {
-                if(oc[i].first==applicants[i].user_id)
-                {
-                    if(applicants[i].is_allocated==false)
-                    {
-                        if(checkSeat(applicants[i].choice_1,applicants[i].cat))
-                        {
-                            give_seat(applicants[i].choice_1,applicants[i].cat);
-                            applicants[i].allocated_branch=applicants[i].choice_1;
-                            break;
-                        }
-                        else if(checkSeat(applicants[i].choice_2,applicants[i].cat))
-                        {
-                            give_seat(applicants[i].choice_2,applicants[i].cat);
-                            applicants[i].allocated_branch=applicants[i].choice_2;
-                            break;
-                        }
-                        else if(checkSeat(applicants[i].choice_3,applicants[i].cat))
-                        {
-                            give_seat(applicants[i].choice_3,applicants[i].cat);
-                            applicants[i].allocated_branch=applicants[i].choice_3;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
+        
 
-        for(int i=0;i<obc.size();i++)
+        for(int j=0;j<obc.size();j++)
         {
-            for(int j=0;j<100;j++)
+            for(int i=0;i<250;i++)
             {
-                if(oc[i].first==applicants[i].user_id)
+                if(obc[j].first==applicants[i].user_id && applicants[i].is_allocated==false)
                 {
-                    if(applicants[i].is_allocated==false)
+                    if(checkSeat(applicants[i].choice_1,applicants[i].cat))
                     {
-                        if(checkSeat(applicants[i].choice_1,applicants[i].cat))
-                        {
-                            give_seat(applicants[i].choice_1,applicants[i].cat);
-                            applicants[i].allocated_branch=applicants[i].choice_1;
-                            break;
-                        }
-                        else if(checkSeat(applicants[i].choice_2,applicants[i].cat))
-                        {
-                            give_seat(applicants[i].choice_2,applicants[i].cat);
-                            applicants[i].allocated_branch=applicants[i].choice_2;
-                            break;
-                        }
-                        else if(checkSeat(applicants[i].choice_3,applicants[i].cat))
-                        {
-                            give_seat(applicants[i].choice_3,applicants[i].cat);
-                            applicants[i].allocated_branch=applicants[i].choice_3;
-                            break;
-                        }
+                        allocate_seat(applicants[i].choice_1,applicants[i].cat);
+                        applicants[i].allocated_branch=applicants[i].choice_1;
+                        break;
                     }
+                    else if(checkSeat(applicants[i].choice_2,applicants[i].cat))
+                    {
+                        allocate_seat(applicants[i].choice_2,applicants[i].cat);
+                        applicants[i].allocated_branch=applicants[i].choice_2;
+                        break;
+                    }
+                    else if(checkSeat(applicants[i].choice_3,applicants[i].cat))
+                    {
+                        allocate_seat(applicants[i].choice_3,applicants[i].cat);
+                        applicants[i].allocated_branch=applicants[i].choice_3;
+                        break;
+                    }
+                    
                 }
             }
         }
@@ -226,25 +228,25 @@ class SeatAllocater
         {
             for(int j=0;j<100;j++)
             {
-                if(oc[i].first==applicants[i].user_id)
+                if(ews[i].first==applicants[i].user_id)
                 {
                     if(applicants[i].is_allocated==false)
                     {
                         if(checkSeat(applicants[i].choice_1,applicants[i].cat))
                         {
-                            give_seat(applicants[i].choice_1,applicants[i].cat);
+                            allocate_seat(applicants[i].choice_1,applicants[i].cat);
                             applicants[i].allocated_branch=applicants[i].choice_1;
                             break;
                         }
                         else if(checkSeat(applicants[i].choice_2,applicants[i].cat))
                         {
-                            give_seat(applicants[i].choice_2,applicants[i].cat);
+                            allocate_seat(applicants[i].choice_2,applicants[i].cat);
                             applicants[i].allocated_branch=applicants[i].choice_2;
                             break;
                         }
                         else if(checkSeat(applicants[i].choice_3,applicants[i].cat))
                         {
-                            give_seat(applicants[i].choice_3,applicants[i].cat);
+                            allocate_seat(applicants[i].choice_3,applicants[i].cat);
                             applicants[i].allocated_branch=applicants[i].choice_3;
                             break;
                         }
@@ -257,25 +259,25 @@ class SeatAllocater
         {
             for(int j=0;j<100;j++)
             {
-                if(oc[i].first==applicants[i].user_id)
+                if(sc[i].first==applicants[i].user_id)
                 {
                     if(applicants[i].is_allocated==false)
                     {
                         if(checkSeat(applicants[i].choice_1,applicants[i].cat))
                         {
-                            give_seat(applicants[i].choice_1,applicants[i].cat);
+                            allocate_seat(applicants[i].choice_1,applicants[i].cat);
                             applicants[i].allocated_branch=applicants[i].choice_1;
                             break;
                         }
                         else if(checkSeat(applicants[i].choice_2,applicants[i].cat))
                         {
-                            give_seat(applicants[i].choice_2,applicants[i].cat);
+                            allocate_seat(applicants[i].choice_2,applicants[i].cat);
                             applicants[i].allocated_branch=applicants[i].choice_2;
                             break;
                         }
                         else if(checkSeat(applicants[i].choice_3,applicants[i].cat))
                         {
-                            give_seat(applicants[i].choice_3,applicants[i].cat);
+                            allocate_seat(applicants[i].choice_3,applicants[i].cat);
                             applicants[i].allocated_branch=applicants[i].choice_3;
                             break;
                         }
@@ -288,25 +290,25 @@ class SeatAllocater
         {
             for(int j=0;j<100;j++)
             {
-                if(oc[i].first==applicants[i].user_id)
+                if(st[i].first==applicants[i].user_id)
                 {
                     if(applicants[i].is_allocated==false)
                     {
                         if(checkSeat(applicants[i].choice_1,applicants[i].cat))
                         {
-                            give_seat(applicants[i].choice_1,applicants[i].cat);
+                            allocate_seat(applicants[i].choice_1,applicants[i].cat);
                             applicants[i].allocated_branch=applicants[i].choice_1;
                             break;
                         }
                         else if(checkSeat(applicants[i].choice_2,applicants[i].cat))
                         {
-                            give_seat(applicants[i].choice_2,applicants[i].cat);
+                            allocate_seat(applicants[i].choice_2,applicants[i].cat);
                             applicants[i].allocated_branch=applicants[i].choice_2;
                             break;
                         }
                         else if(checkSeat(applicants[i].choice_3,applicants[i].cat))
                         {
-                            give_seat(applicants[i].choice_3,applicants[i].cat);
+                            allocate_seat(applicants[i].choice_3,applicants[i].cat);
                             applicants[i].allocated_branch=applicants[i].choice_3;
                             break;
                         }
@@ -344,7 +346,7 @@ class SeatAllocater
         }
     }
 
-    void give_seat(string branch,string cat)
+    void allocate_seat(string branch,string cat)
     {
         if(branch=="CSE")
         {
@@ -378,14 +380,8 @@ class SeatAllocater
 
 int main()
 {
-    string f1,f2;
-    getline(cin,f1);
-    getline(cin,f2);
-    open_f1(f1);
-    open_f2(f2);
 
-    SeatAllocater
- obj;
+    SeatAllocater obj;
     obj.allocateSeat();
 
 }
