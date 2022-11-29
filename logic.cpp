@@ -713,7 +713,100 @@ void openFile2(string f2)
         }
         return false;
     }
-bool checkOpenSeat(string clg,string branch);
+bool checkOpenSeat(string clg,string branch)
+{
+    if(clg=="NIT WARANGAL")
+        {
+            if(branch=="CSE")
+            {
+                if(nit_warangal["CSE"][0])  return true;
+                else return false;
+            }
+            else if(branch=="ECE")
+            {
+                if(nit_warangal["ECE"][0])  return true;
+                else return false;
+            }
+            else if(branch=="MECH")
+            {
+                if(nit_warangal["MECH"][0])  return true;
+                else return false;
+            }
+        }
+        else if(clg=="NIT CALICUT")
+        {
+            if(branch=="CSE")
+            {
+                if(nit_calicut["CSE"][0])  return true;
+                else return false; 
+            }
+            else if(branch=="ECE")
+            {
+                if(nit_calicut["ECE"][0])  return true;
+                else return false; 
+            }
+            else if(branch=="MECH")
+            {
+                 if(nit_calicut["MECH"][0])  return true;
+                else return false; 
+            }
+        }
+        else if(clg=="IIIT TRICHY")
+        {
+            if(branch=="CSE")
+            {
+                if(iiit_trichy["CSE"][0])  return true;
+                else return false;
+            }
+            else if(branch=="ECE")
+            {
+                if(iiit_trichy["ECE"][0])  return true;
+                else return false;
+            }
+            else if(branch=="MECH")
+            {
+                if(iiit_trichy["MECH"][0])  return true;
+                else return false;
+            }
+        }
+        else if(clg=="IIIT RANCHI")
+        {
+            if(branch=="CSE")
+            {
+                if(iiit_ranchi["CSE"][0])  return true;
+                else return false;
+            }
+            else if(branch=="ECE")
+            {
+                if(iiit_ranchi["ECE"][0])  return true;
+                else return false;
+            }
+            else if(branch=="MECH")
+            {
+               if(iiit_ranchi["MECH"][0])  return true;
+                else return false;
+            }
+        }
+        else if(clg=="IIT GOA")
+        {
+            if(branch=="CSE")
+            {
+                if(iit_goa["CSE"][0])  return true;
+                else return false;
+                
+            }
+            else if(branch=="ECE")
+            {
+                if(iit_goa["ECE"][0])  return true;
+                else return false;
+            }
+            else if(branch=="MECH")
+            {
+                if(iit_goa["MECH"][0])  return true;
+                else return false;
+            }
+        }
+}
    void giveSeat(string clg,string branch,string category)
     {
         if(clg=="NIT WARANGAL")
@@ -837,7 +930,112 @@ bool checkOpenSeat(string clg,string branch);
             }
         }
     } 
-    void giveOpenSeat(string clg,string branch);
+    void giveOpenSeat(string clg,string branch)
+    {
+        if(clg=="NIT WARANGAL")
+        {
+            if(branch=="CSE")
+            {
+                nit_warangal["CSE"][0]--;
+            }
+            else if(branch=="ECE")
+            {
+                nit_warangal["ECE"][0]--;
+            }
+            else if(branch=="MECH")
+            {
+                nit_warangal["MECH"][0]--;
+            }
+        }
+        else if(clg=="NIT CALICUT")
+        {
+            if(branch=="CSE")
+            {
+                nit_calicut["CSE"][0]--;
+            }
+            else if(branch=="ECE")
+            {
+                nit_calicut["ECE"][0]--;
+            }
+            else if(branch=="MECH")
+            {
+                nit_calicut["MECH"][0]--;
+            }
+        }
+        else if(clg=="IIIT TRICHY")
+        {
+            if(branch=="CSE")
+            {
+                iiit_trichy["CSE"][0]--;
+            }
+            else if(branch=="ECE")
+            {
+                iiit_trichy["ECE"][0]--;
+            }
+            else if(branch=="MECH")
+            {
+                iiit_trichy["MECH"][0]--;
+            }
+        }
+        else if(clg=="IIIT RANCHI")
+        {
+            if(branch=="CSE")
+            {
+                iiit_ranchi["CSE"][0]--;
+            }
+            else if(branch=="ECE")
+            {
+                iiit_ranchi["ECE"][0]--;
+            }
+            else if(branch=="MECH")
+            {
+                iiit_ranchi["MECH"][0]--;
+            }
+        }
+        else if(clg=="IIT GOA")
+        {
+            if(branch=="CSE")
+            {
+                iit_goa["CSE"][0]--;
+            }
+            else if(branch=="ECE")
+            {
+                iit_goa["ECE"][0]--;
+            }
+            else if(branch=="MECH")
+            {
+                iit_goa["MECH"][0]--;
+            }
+        }
+    }
+
+    void distributeStudentsToColleges()
+    {
+    for(int i=0;i<250;i++)
+    {
+        if(applicants[i].allocated_college=="NIT WARANGAL")
+        {
+            nit_warangal_students_list[applicants[i].allocated_branch].push_back(stoi(applicants[i].user_id));
+        }
+        else if(applicants[i].allocated_college=="NIT CALICUT")
+        {
+            nit_calicut_students_list[applicants[i].allocated_branch].push_back(stoi(applicants[i].user_id));
+        }
+        else if(applicants[i].allocated_college=="IIT GOA")
+        {
+            iit_goa_students_list[applicants[i].allocated_branch].push_back(stoi(applicants[i].user_id));
+        }
+        else if(applicants[i].allocated_college=="IIIT RANCHI")
+        {
+            iiit_ranchi_students_list[applicants[i].allocated_branch].push_back(stoi(applicants[i].user_id));
+        }
+        else if(applicants[i].allocated_college=="IIIT TRICHY")
+        {
+            iiit_trichy_students_list[applicants[i].allocated_branch].push_back(stoi(applicants[i].user_id));
+        }
+    }
+    }
+
 
 };
 
