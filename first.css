@@ -1,0 +1,29 @@
+h1{
+    color: rgb(45, 167, 140);
+    align-self: center;
+    padding-left: 40%;
+    background-color: blanchedalmond;
+}
+p{
+    font-size: medium;
+    padding-left: 30%;
+    color:navy;
+    background-color: bisque;
+}
+*{
+    background-color:ghostwhite;
+}
+#submit:hover{
+    background-color: antiquewhite;
+    color:blue;
+}
+.links{
+    color:black;
+}
+.links:hover
+{
+    color:blueviolet;
+}
+div,h3{
+    padding-left: 30%;
+}
