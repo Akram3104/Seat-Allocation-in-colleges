@@ -1054,7 +1054,7 @@ class SeatAllocater
     void listAllTheStudentsInCollege()
     {
         ofstream file1;
-        file1.open("IIT_GOA_LIST");
+        file1.open("IIT_GOA_LIST.txt");
 
         file1<<"STUDENTS IN CSE BRANCH \n";
         for(auto i : iit_goa_students_list["CSE"])
@@ -1074,7 +1074,7 @@ class SeatAllocater
         file1.close();
 
         ofstream file2;
-        file2.open("NIT_WARANGAL_LIST");
+        file2.open("NIT_WARANGAL_LIST.txt");
     
         file2<<"STUDENTS IN CSE BRANCH \n";
         for(auto i : nit_warangal_students_list["CSE"])
@@ -1094,7 +1094,7 @@ class SeatAllocater
         file2.close();
 
         ofstream file3;
-        file3.open("NIT_CALICUT_LIST");
+        file3.open("NIT_CALICUT_LIST.txt");
     
         file3<<"STUDENTS IN CSE BRANCH \n";
         for(auto i : nit_calicut_students_list["CSE"])
@@ -1114,7 +1114,7 @@ class SeatAllocater
         file3.close();
 
         ofstream file4;
-        file4.open("IIIT_TRICHY_LIST");  
+        file4.open("IIIT_TRICHY_LIST.txt");  
         file4<<"STUDENTS IN CSE BRANCH \n";
         for(auto i : iiit_trichy_students_list["CSE"])  
         {
@@ -1133,7 +1133,7 @@ class SeatAllocater
         file4.close();
 
         ofstream file5;
-        file5.open("IIIT_RANCHI_LIST");
+        file5.open("IIIT_RANCHI_LIST.txt");
         file5<<"STUDENTS IN CSE BRANCH \n";
         for(auto i : iiit_ranchi_students_list["CSE"])
         {

@@ -1,0 +1,22 @@
+*{
+    background-color: aliceblue;
+}
+h1{
+    padding-left: 35%;
+}
+div{
+    border: 5mm;
+    padding-left: 35%;
+    align-items: center;
+}
+label{
+    font-size: large;
+}
+form{
+    border-color: black;
+    border-radius: 5%;
+}
+#submit:hover{
+    background-color:aqua;
+    cursor: pointer;
+}

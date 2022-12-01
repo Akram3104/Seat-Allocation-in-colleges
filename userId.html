@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="userId.css">
+    <!-- <link rel="stylesheet" href="userId.js"> -->
+</head>
+<body>
+    <h1>Login Credentials</h1>
+    <form onsubmit="func()">
+        <div>
+            <label>Enter User Name</label>
+            <br><br>
+            <input type="text" placeholder="Enter User Name" id="user_name" required>
+        </div>
+        <br><br>
+        <div>
+            <label>Enter Password</label>
+            <br><br>
+            <input type="password" placeholder="Enter Password" id="password" required>
+        </div>
+        <br><br>
+        <div>
+            <input type="submit" value="submit" id="submit">
+        </div>
+    </form>
+    <script>
+        function func(event)
+        {
+        // event.preventDefault();
+        let user_id=document.getElementById("user_name").value;
+        let password=document.getElementById("password").value;
+        if(user_id=="NIT_CALICUT" && password=="NIT_CALICUT")
+        {
+            open("nitCalicut.html");
+        }
+        if(user_id=="NIT_WARANGAL" && password=="NIT_WARANGAL")
+        {
+            open("nitWarangal.html");
+        }
+        else
+        {
+            alert("Invalid Credentials");
+        }
+        }
+    </script>
+</body>
+</html>
