@@ -1,4 +1,4 @@
-Title: Seat Allocation in colleges
+# Seat Allocation in colleges
 
 Name of team members: 
 1. Mohammed Abdul Akram (Roll number : 211120)
