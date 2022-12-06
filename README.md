@@ -2,7 +2,7 @@ Title: Seat Allocation in colleges
 
 Name of team members: 
 1. Mohammed Abdul Akram (Roll number : 211120)
-1. Harsha Vardhan Reddy Manam (Roll number : 211112)
+2. Harsha Vardhan Reddy Manam (Roll number : 211112)
 
 Problem Statement:
 Allocate seats to students in different colleges based on their ranks (both category and open rank). Also include reservation seats which are reserved to particular category only.Provide a facility for the colleges to have the ids of the students who got seat in their college and further no college should be able to see students of other college. 
@@ -46,4 +46,6 @@ How to Run the program:
 2. Run the program logic.cpp
 3. Run the html files
 4. Output can be checked in the website using userid and password or can be verified in output text files
+
+
 
