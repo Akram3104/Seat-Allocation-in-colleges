@@ -1,4 +1,4 @@
-Title Name:Seat Allocation in colleges
+# Seat Allocation in colleges
 
 Name of team members: 
 1. Mohammed Abdul Akram (Roll number : 211120)
@@ -47,5 +47,12 @@ How to Run the program:
 3. Run the html files
 4. Output can be checked in the website using userid and password or can be verified in output text files
 
+UML 
+
+
+![image](https://user-images.githubusercontent.com/118093019/206178714-7a447a35-dcca-4ca3-97c7-46c46c9c3c02.png)
+
+
+![image](https://user-images.githubusercontent.com/118093019/206179378-451d0ec9-39bb-41d0-a5c8-3e4a2b6c079a.png)
 
 
