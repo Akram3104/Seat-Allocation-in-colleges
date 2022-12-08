@@ -44,7 +44,7 @@ ASSUMPTIONS:
 How to Run the program:
 1. Write the data of two text files info_category.txt and sample_choices.txt 
 2. Run the program logic.cpp
-3. Run the html files
+3. Run the html file (index.html)
 4. Output can be checked in the website using userid and password or can be verified in output text files
 
 UML 
@@ -56,3 +56,13 @@ UML
 ![image](https://user-images.githubusercontent.com/118093019/206179378-451d0ec9-39bb-41d0-a5c8-3e4a2b6c079a.png)
 
 
+Input text file names :
+1.info_category.txt
+2.sample_choices.txt
+
+Output text file names :
+IIT_GOA_LIST.txt
+NIT_WARANGAL_LIST.txt
+NIT_CALICUT_LIST.txt
+IIIT_TRICHY_LIST.txt
+IIIT_RANCHI_LIST.txt
