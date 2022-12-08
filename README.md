@@ -56,13 +56,8 @@ UML
 ![image](https://user-images.githubusercontent.com/118093019/206179378-451d0ec9-39bb-41d0-a5c8-3e4a2b6c079a.png)
 
 
-Input text file names :
-1.info_category.txt
-2.sample_choices.txt
+Input and Output 
 
-Output text file names :
-IIT_GOA_LIST.txt
-NIT_WARANGAL_LIST.txt
-NIT_CALICUT_LIST.txt
-IIIT_TRICHY_LIST.txt
-IIIT_RANCHI_LIST.txt
+Click Link to open input and output folder
+
+https://github.com/Akram3104/Seat-Allocation-in-colleges/tree/master/Input%20and%20Output%20floder
